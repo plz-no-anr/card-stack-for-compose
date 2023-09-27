@@ -1,6 +1,6 @@
 # card-stack-for-compose
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.plz-no-anr/card-stack-for-compose.svg)](https://central.sonatype.com/artifact/io.github.plz-no-anr/card-stack-for-compose)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.plz-no-anr/card-stack.svg)](https://central.sonatype.com/artifact/io.github.plz-no-anr/card-stack)
 [![API](https://img.shields.io/badge/API-23%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=23)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

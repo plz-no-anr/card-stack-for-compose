@@ -40,7 +40,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.2"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":card-stack"))
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)

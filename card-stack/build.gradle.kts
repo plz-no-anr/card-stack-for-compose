@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
@@ -26,25 +28,38 @@ android {
             )
         }
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3"
+    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    api(libs.compose.material)
+    implementation(libs.material3)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
 
-val properties = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir)
+val properties = gradleLocalProperties(rootDir)
 val signingMap = mapOf(
     "signing.keyId" to properties.getProperty("signing.keyId"),
     "signing.password" to properties.getProperty("signing.password"),
@@ -53,7 +68,7 @@ val signingMap = mapOf(
 
 val androidSourceJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
-    from(android.sourceSets.getByName("main").java.srcDirs,)
+    from(android.sourceSets.getByName("main").java.srcDirs)
 }
 
 android.publishing.singleVariant("release")
